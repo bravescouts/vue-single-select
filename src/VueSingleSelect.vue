@@ -151,7 +151,10 @@ export default {
     getOptionDescription: {
       type: Function,
       default: function (option) {
-        if (this.optionKey && this.optionLabel) {
+        if (this.optionKey && this.optionLabel && this.showLabelOnly) {  //sharris: add condition based on new property showLabelOnly=true|false
+          return option[this.optionLabel];
+        }
+        if (this.optionKey && this.optionLabel && !this.showLabelOnly) {  
           return option[this.optionKey] + " " + option[this.optionLabel];
         }
         if (this.optionLabel) {
